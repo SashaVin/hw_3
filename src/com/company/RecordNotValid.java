@@ -1,6 +1,6 @@
 package com.company;
 
-public class RecordNotValid extends RuntimeException{
+public class RecordNotValid extends Exception{
 
     public RecordNotValid(String message){
         super(message);

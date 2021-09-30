@@ -2,7 +2,7 @@ package com.company;
 
 public class Main {
 
-    public static void main(String[] args) throws PhoneNumberAlreadyExists {
+    public static void main(String[] args) throws RecordNotFound {
         Record p1 = new Record(23,"88005553535", "Prosto");
         Record p2 = new Record(24,"88005553536", "Sredne");
         Record p3 = new Record(25,"88005553537", "Slogno");
@@ -16,12 +16,15 @@ public class Main {
             phoneBook.createRecord(p4);
         } catch (PhoneNumberAlreadyExists err) {
             System.out.println("ERROR");
-            throw err;
         }
         System.out.println(phoneBook.getAllRecords());
-        phoneBook.updateRecord(p1);
+        try {
+            phoneBook.updateRecord(p1);
+        } catch (RecordNotValid err1) {
+            err1.printStackTrace();
+        }
         System.out.println(phoneBook.getAllRecords());
-        phoneBook.deleteRecord(25);
+        phoneBook.deleteRecord(285);
         System.out.println(phoneBook.getAllRecords());
         //chek
     }

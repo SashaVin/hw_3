@@ -14,7 +14,9 @@ public class PhoneBook{
 
     public void createRecord(Record record) throws PhoneNumberAlreadyExists{
         for (Record i: list){
-            if (record.getPhoneNum() == i.getPhoneNum()) throw new PhoneNumberAlreadyExists("Запись с таким номером уже существует");
+            if (record.getPhoneNum().equals(i.getPhoneNum())) {
+                throw new PhoneNumberAlreadyExists("Запись с таким номером уже существует");
+            }
         }
         this.list.add(record);
     }
@@ -45,15 +47,14 @@ public class PhoneBook{
     }
 
     public void deleteRecord(long id) throws RecordNotFound{
-        int count = 0;
+
         for (Record i: list) {
             if (id == i.getId()) {
-                count++;
                 list.remove(i);
+                return;
             }
-        }if (count == 0) {
-            throw new RecordNotFound("Подходящая запись в справочнике не найдена");
         }
+        throw new RecordNotFound("Подходящая запись в справочнике не найдена");
 
     }
 
