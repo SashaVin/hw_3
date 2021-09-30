@@ -52,7 +52,6 @@ public class PhoneBook{
                 list.remove(i);
             }
         }if (count == 0) {
-            System.out.println("sdfewf");
             throw new RecordNotFound("Подходящая запись в справочнике не найдена");
         }
 
